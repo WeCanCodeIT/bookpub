@@ -3,6 +3,9 @@ package com.donhamiltoniii.bookpub.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Book {
@@ -13,11 +16,16 @@ public class Book {
 	private String title;
 	private String description;
 	
+	@ManyToOne
+	@JsonIgnore
+	private Author author;
+	
 	public Book() {}
 	
-	public Book(String title, String description) {
+	public Book(String title, String description, Author author) {
 		this.title = title;
 		this.description = description;
+		this.author = author;
 	}
 
 	public Long getId() {
@@ -30,6 +38,10 @@ public class Book {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public Author getAuthor() {
+		return author;
 	}
 
 	@Override
