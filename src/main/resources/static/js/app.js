@@ -19,18 +19,36 @@ fetch("/authors")
 									<p class="book__description">${book.description}</p>
 								</li>
 							`;
-              })
-              .join("")}
+              }).join('')
+              }
 			 		</ul>
 			 	</li>
 		 	`;
     });
     content += `</ul>`;
-    let commentsContent = '<ul>';
-    authors[0].comments.forEach(comment => {
-    	commentsContent += `<li>${comment.content}</li>`
+    let commentsContent = `<ul class="comments">`;
+    authors[0].books[0].comments.forEach((comment, index) => {
+    	commentsContent += `<li class="comment" data-key="${index}">${comment.content}<button class="comment__delete-button">Delete Me!</button></li>`
     })
     commentsContent += '</ul>'
     app.innerHTML = commentsContent;
   })
   .catch(err => console.log(err));
+
+document.body.addEventListener('click', event => {
+    if (event.target.classList.contains('comment__delete-button')) {
+        const deleteButton = event.target;
+        const commentIndex = deleteButton.parentElement.getAttribute('data-key')
+
+        removeComment(commentIndex)
+    }
+})
+
+function removeComment(commentIndex) {
+    fetch('/books/3/delete-comment', {
+        method: 'DELETE',
+        body: JSON.stringify({
+            commentIndex
+        })
+    }).then(res => res.json()).then(data => console.log(data))
+} 

@@ -2,6 +2,7 @@ package com.donhamiltoniii.bookpub.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -27,7 +28,7 @@ public class Book {
 
 	@ElementCollection
 	@CollectionTable
-	private Collection<Comment> comments;
+	private List<Comment> comments;
 
 	public Book() {
 	}
@@ -66,6 +67,10 @@ public class Book {
 
 	public void addComment(Comment comment) {
 		comments.add(comment);
+	}
+
+	public void removeComment(Integer commentIndex) {
+		comments.remove(comments.get(commentIndex));
 	}
 
 }
