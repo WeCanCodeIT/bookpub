@@ -36,7 +36,6 @@ public class BookController {
 		Book book = bookRepo.findById(id).get();
 		book.removeComment(commentIndex);
 		book = bookRepo.save(book);
-		System.out.println(book.getComments());
 
 		return book.getComments();
 	}
