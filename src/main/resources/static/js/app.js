@@ -26,6 +26,11 @@ fetch("/authors")
 		 	`;
     });
     content += `</ul>`;
-    app.innerHTML = content;
+    let commentsContent = '<ul>';
+    authors[0].comments.forEach(comment => {
+    	commentsContent += `<li>${comment.content}</li>`
+    })
+    commentsContent += '</ul>'
+    app.innerHTML = commentsContent;
   })
   .catch(err => console.log(err));

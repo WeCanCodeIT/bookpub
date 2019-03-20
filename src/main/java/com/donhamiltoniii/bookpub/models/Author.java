@@ -1,7 +1,10 @@
 package com.donhamiltoniii.bookpub.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,12 +22,16 @@ public class Author {
 	@OneToMany(mappedBy="author")
 	private Collection<Book> books;
 	
+	@ElementCollection
+	@CollectionTable
+	private Collection<Comment> comments;
+
 	public Author() {}
 
 	public Author(String firstName, String lastName) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.comments = new ArrayList<Comment>();
 	}
 
 	public Long getId() {
@@ -41,6 +48,14 @@ public class Author {
 
 	public Collection<Book> getBooks() {
 		return books;
+	}
+	
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void addComment(Comment comment) {
+		comments.add(comment);
 	}
 
 	@Override
