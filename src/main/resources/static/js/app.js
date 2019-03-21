@@ -2,6 +2,8 @@ import api from "./utils/api/api-actions";
 import render from "./utils/render/render-actions";
 import events from "./utils/events/event-actions";
 
+import "../css/global.css";
+
 function run() {
   bindHomeApiRequest();
   bindAddAuthorButton();

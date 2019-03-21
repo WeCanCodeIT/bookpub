@@ -1,0 +1,1 @@
+{"version":3,"sources":["global.css"],"names":[],"mappings":"AAAA,EACE,qBAAsB,CACtB,QAAS,CACT,SACF","file":"app.385023c4.css","sourceRoot":"../src/main/resources/static/html","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n"]}
