@@ -11,4 +11,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./books":"p3vA"}],"GFX4":[function(require,module,exports) {
 "use strict";var e=n(require("./utils/api/api-actions")),t=n(require("./utils/events/event-actions"));require("../css/global.css");var u=n(require("./components/authors"));function n(e){return e&&e.__esModule?e:{default:e}}function a(){o(),s()}function r(){return document.querySelector("#app")}function o(){e.default.getRequest("/authors",function(e){r().innerHTML=(0,u.default)(e)})}function s(){t.default.on(document.body,"click",function(t){t.target.classList.contains("add-author__submit")&&e.default.postRequest("/authors/add",{firstName:document.querySelector(".add-author__first-name").value,lastName:document.querySelector(".add-author__last-name").value},function(e){r().innerHTML=(0,u.default)(e)})})}a();
 },{"./utils/api/api-actions":"Yw/X","./utils/events/event-actions":"WIWw","../css/global.css":"ldZ5","./components/authors":"cEor"}]},{},["GFX4"], null)
-//# sourceMappingURL=/app.705d157f.js.map
+//# sourceMappingURL=/app.d6b6d964.js.map
