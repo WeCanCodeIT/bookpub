@@ -15,7 +15,9 @@ function getAppContext() {
 
 function bindHomeApiRequest() {
   api.getRequest("/authors", function(authors) {
-    getAppContext().innerHTML = render.authors(authors);
+    getAppContext().innerHTML = `<div class="container">${render.authors(
+      authors
+    )}</div>`;
   });
 }
 
