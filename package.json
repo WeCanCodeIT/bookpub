@@ -1,0 +1,23 @@
+{
+  "name": "bookpub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build src/main/resources/static/html/index.html && rm src/main/resources/static/*.{html,js,js.map} && mv ./dist/* src/main/resources/static && rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeCanCodeIT/bookpub.git"
+  },
+  "keywords": [],
+  "author": "Don Hamilton III <donhamiltoniii@gmail.com> (https://donhamiltoniii.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeCanCodeIT/bookpub/issues"
+  },
+  "homepage": "https://github.com/WeCanCodeIT/bookpub#readme",
+  "dependencies": {
+    "parcel": "^1.12.2"
+  }
+}

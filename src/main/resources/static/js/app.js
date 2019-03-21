@@ -1,36 +1,37 @@
-const app = document.querySelector("#app");
+import api from "./utils/api/api-actions";
+import render from "./utils/render/render-actions";
+import events from "./utils/events/event-actions";
 
-app.textContent = "Hello JS!";
+function run() {
+  bindHomeApiRequest();
+  bindAddAuthorButton();
+}
 
-fetch("/authors")
-  .then(response => response.json())
-  .then(authors => {
-    let content = `<ul class="authors">`;
-    authors.forEach(author => {
-      content += `
-			 	<li class="author">
-			 		<h3 class="author__name">${author.firstName} ${author.lastName}</h3>
-			 		<ul class="books">
-			 			${author.books
-              .map(book => {
-                return `
-								<li class="book">
-									<h5 class="book__title">${book.title}</h5>
-									<p class="book__description">${book.description}</p>
-								</li>
-							`;
-              })
-              .join("")}
-			 		</ul>
-			 	</li>
-		 	`;
-    });
-    content += `</ul>`;
-    let commentsContent = '<ul>';
-    authors[0].comments.forEach(comment => {
-    	commentsContent += `<li>${comment.content}</li>`
-    })
-    commentsContent += '</ul>'
-    app.innerHTML = commentsContent;
-  })
-  .catch(err => console.log(err));
+function getAppContext() {
+  return document.querySelector("#app");
+}
+
+function bindHomeApiRequest() {
+  api.getRequest("/authors", function(authors) {
+    getAppContext().innerHTML = render.authors(authors);
+  });
+}
+
+function bindAddAuthorButton() {
+  events.on(document.body, "click", event => {
+    if (event.target.classList.contains("add-author__submit")) {
+      api.postRequest(
+        "/authors/add",
+        {
+          firstName: document.querySelector(".add-author__first-name").value,
+          lastName: document.querySelector(".add-author__last-name").value
+        },
+        authors => {
+          getAppContext().innerHTML = render.authors(authors);
+        }
+      );
+    }
+  });
+}
+
+run();

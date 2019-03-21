@@ -18,20 +18,22 @@ public class Author {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	
-	@OneToMany(mappedBy="author")
+
+	@OneToMany(mappedBy = "author")
 	private Collection<Book> books;
-	
+
 	@ElementCollection
 	@CollectionTable
 	private Collection<Comment> comments;
 
-	public Author() {}
+	public Author() {
+	}
 
 	public Author(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.comments = new ArrayList<Comment>();
+		this.books = new ArrayList<Book>();
 	}
 
 	public Long getId() {
@@ -49,7 +51,7 @@ public class Author {
 	public Collection<Book> getBooks() {
 		return books;
 	}
-	
+
 	public Collection<Comment> getComments() {
 		return comments;
 	}
