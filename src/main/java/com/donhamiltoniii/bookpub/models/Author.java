@@ -32,6 +32,7 @@ public class Author {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.comments = new ArrayList<Comment>();
+		this.books = new ArrayList<Book>();
 	}
 
 	public Long getId() {
