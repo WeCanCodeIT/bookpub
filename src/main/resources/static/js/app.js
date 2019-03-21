@@ -1,6 +1,9 @@
 import api from "./utils/api/api-actions";
-import render from "./utils/render/render-actions";
 import events from "./utils/events/event-actions";
+
+import "../css/global.css";
+
+import Authors from "./components/authors";
 
 function run() {
   bindHomeApiRequest();
@@ -13,7 +16,7 @@ function getAppContext() {
 
 function bindHomeApiRequest() {
   api.getRequest("/authors", function(authors) {
-    getAppContext().innerHTML = render.authors(authors);
+    getAppContext().innerHTML = Authors(authors);
   });
 }
 
@@ -27,7 +30,7 @@ function bindAddAuthorButton() {
           lastName: document.querySelector(".add-author__last-name").value
         },
         authors => {
-          getAppContext().innerHTML = render.authors(authors);
+          getAppContext().innerHTML = Authors(authors);
         }
       );
     }

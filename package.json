@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build src/main/resources/static/html/index.html && rm src/main/resources/static/*.{html,js,js.map} && mv ./dist/* src/main/resources/static && rm -rf dist"
+    "build": "parcel build src/main/resources/static/html/index.html && rm src/main/resources/static/*.{html,js,js.map,css,css.map} && mv ./dist/* src/main/resources/static && rm -rf dist"
   },
   "repository": {
     "type": "git",
