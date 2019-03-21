@@ -7,3 +7,9 @@
 html {
   font: 20px/1 sans-serif;
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 90%;
+  width: 1000px;
+}
